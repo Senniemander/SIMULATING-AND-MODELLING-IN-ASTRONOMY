@@ -18,7 +18,7 @@ Consider coupling with hydrodynamic simulations using Phantom (SPH code) and bri
 - Hydro codes – to simulate fluid dynamics (ch.6)
 - MESA – stellar evolution modeling
 - Phantom (SPH) – smoothed-particle hydrodynamics (ch.6)
-- Bridge coupling – combining different simulation domains ch.9
+- Bridge coupling – combining different simulation domains (ch.9)
 
 ## Team Members (Week 15 – 23 Oct)
 - Sanne – Lit research, hermygrex, Bridge coupling
