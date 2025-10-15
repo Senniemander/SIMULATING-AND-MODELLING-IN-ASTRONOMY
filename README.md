@@ -25,8 +25,8 @@ Consider coupling with hydrodynamic simulations using Phantom (SPH code) and bri
 - Kelly – Lit research, MESA, Bridge coupling 
 - Boyd – Lit research, Phantom (SPH), Bridge coupling
 
-### 
-[Research](https://www.overleaf.com/8617283658fwtpzwswhfwm#dd87c5)
+## Research
+[Overleaf](https://www.overleaf.com/8617283658fwtpzwswhfwm#dd87c5)
 
 ## Star name
 options:
