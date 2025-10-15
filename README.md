@@ -14,16 +14,16 @@ Explore possible extensions, such as clusters of black holes.
 Consider coupling with hydrodynamic simulations using Phantom (SPH code) and bridge methods.
 
 Tools and Methods
-Mesa - stellar evolution
-HermyGrex – for gravitational and hydrodynamic modeling
-Hydro codes – to simulate fluid dynamics
-MESA – stellar evolution modeling
-Phantom (SPH) – smoothed-particle hydrodynamics
-Bridge coupling – combining different simulation domains
+- Mesa - stellar evolution 
+- HermyGrex – for gravitational and hydrodynamic modeling
+- Hydro codes – to simulate fluid dynamics
+- MESA – stellar evolution modeling
+- Phantom (SPH) – smoothed-particle hydrodynamics
+- Bridge coupling – combining different simulation domains
 
 Team Members (Week 15 – 23 Oct)
-Sanne – 
-Kelly –
-Boyd – 
+- Sanne – 
+- Kelly –
+- Boyd – 
 
 This repo is a work in progress but more informartion about the course can be found [here](https://studiegids.universiteitleiden.nl/en/courses/130588/simulation-and-modeling-in-astrophysics-amuse)
