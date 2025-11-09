@@ -46,7 +46,7 @@
 ---
 
 ## Wednesday Meeting Agenda
-- [ ] Bridge progress + test runs (you)
+- [ ] Bridge progress + test runs (Boyd)
 - [ ] Background & theory summaries (research team)
 - [ ] Discuss:
   - [ ] Parameter choices for next runs  
