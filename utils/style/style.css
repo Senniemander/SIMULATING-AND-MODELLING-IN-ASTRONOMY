@@ -1,0 +1,1641 @@
+/*-----------------------------------------------------------------------------
+| Copyright (c) Jupyter Development Team.
+| Distributed under the terms of the Modified BSD License.
+|----------------------------------------------------------------------------*/
+
+/*-----------------------------------------------------------------------------
+| RenderedText
+|----------------------------------------------------------------------------*/
+
+:root {
+/*#region COLORS*/
+  --md-red-50: #ffebee;
+  --md-red-100: #ffcdd2;
+  --md-red-200: #ef9a9a;
+  --md-red-300: #e57373;
+  --md-red-400: #ef5350;
+  --md-red-500: #f44336;
+  --md-red-600: #e53935;
+  --md-red-700: #d32f2f;
+  --md-red-800: #c62828;
+  --md-red-900: #b71c1c;
+  --md-red-A100: #ff8a80;
+  --md-red-A200: #ff5252;
+  --md-red-A400: #ff1744;
+  --md-red-A700: #d50000;
+
+  --md-pink-50: #fce4ec;
+  --md-pink-100: #f8bbd0;
+  --md-pink-200: #f48fb1;
+  --md-pink-300: #f06292;
+  --md-pink-400: #ec407a;
+  --md-pink-500: #e91e63;
+  --md-pink-600: #d81b60;
+  --md-pink-700: #c2185b;
+  --md-pink-800: #ad1457;
+  --md-pink-900: #880e4f;
+  --md-pink-A100: #ff80ab;
+  --md-pink-A200: #ff4081;
+  --md-pink-A400: #f50057;
+  --md-pink-A700: #c51162;
+
+  --md-purple-50: #f3e5f5;
+  --md-purple-100: #e1bee7;
+  --md-purple-200: #ce93d8;
+  --md-purple-300: #ba68c8;
+  --md-purple-400: #ab47bc;
+  --md-purple-500: #9c27b0;
+  --md-purple-600: #8e24aa;
+  --md-purple-700: #7b1fa2;
+  --md-purple-800: #6a1b9a;
+  --md-purple-900: #4a148c;
+  --md-purple-A100: #ea80fc;
+  --md-purple-A200: #e040fb;
+  --md-purple-A400: #d500f9;
+  --md-purple-A700: #aa00ff;
+
+  --md-deep-purple-50: #ede7f6;
+  --md-deep-purple-100: #d1c4e9;
+  --md-deep-purple-200: #b39ddb;
+  --md-deep-purple-300: #9575cd;
+  --md-deep-purple-400: #7e57c2;
+  --md-deep-purple-500: #673ab7;
+  --md-deep-purple-600: #5e35b1;
+  --md-deep-purple-700: #512da8;
+  --md-deep-purple-800: #4527a0;
+  --md-deep-purple-900: #311b92;
+  --md-deep-purple-A100: #b388ff;
+  --md-deep-purple-A200: #7c4dff;
+  --md-deep-purple-A400: #651fff;
+  --md-deep-purple-A700: #6200ea;
+
+  --md-indigo-50: #e8eaf6;
+  --md-indigo-100: #c5cae9;
+  --md-indigo-200: #9fa8da;
+  --md-indigo-300: #7986cb;
+  --md-indigo-400: #5c6bc0;
+  --md-indigo-500: #3f51b5;
+  --md-indigo-600: #3949ab;
+  --md-indigo-700: #303f9f;
+  --md-indigo-800: #283593;
+  --md-indigo-900: #1a237e;
+  --md-indigo-A100: #8c9eff;
+  --md-indigo-A200: #536dfe;
+  --md-indigo-A400: #3d5afe;
+  --md-indigo-A700: #304ffe;
+
+  --md-blue-50: #e3f2fd;
+  --md-blue-100: #bbdefb;
+  --md-blue-200: #90caf9;
+  --md-blue-300: #64b5f6;
+  --md-blue-400: #42a5f5;
+  --md-blue-500: #2196f3;
+  --md-blue-600: #1e88e5;
+  --md-blue-700: #1976d2;
+  --md-blue-800: #1565c0;
+  --md-blue-900: #0d47a1;
+  --md-blue-A100: #82b1ff;
+  --md-blue-A200: #448aff;
+  --md-blue-A400: #2979ff;
+  --md-blue-A700: #2962ff;
+
+  --md-light-blue-50: #e1f5fe;
+  --md-light-blue-100: #b3e5fc;
+  --md-light-blue-200: #81d4fa;
+  --md-light-blue-300: #4fc3f7;
+  --md-light-blue-400: #29b6f6;
+  --md-light-blue-500: #03a9f4;
+  --md-light-blue-600: #039be5;
+  --md-light-blue-700: #0288d1;
+  --md-light-blue-800: #0277bd;
+  --md-light-blue-900: #01579b;
+  --md-light-blue-A100: #80d8ff;
+  --md-light-blue-A200: #40c4ff;
+  --md-light-blue-A400: #00b0ff;
+  --md-light-blue-A700: #0091ea;
+
+  --md-cyan-50: #e0f7fa;
+  --md-cyan-100: #b2ebf2;
+  --md-cyan-200: #80deea;
+  --md-cyan-300: #4dd0e1;
+  --md-cyan-400: #26c6da;
+  --md-cyan-500: #00bcd4;
+  --md-cyan-600: #00acc1;
+  --md-cyan-700: #0097a7;
+  --md-cyan-800: #00838f;
+  --md-cyan-900: #006064;
+  --md-cyan-A100: #84ffff;
+  --md-cyan-A200: #18ffff;
+  --md-cyan-A400: #00e5ff;
+  --md-cyan-A700: #00b8d4;
+
+  --md-teal-50: #e0f2f1;
+  --md-teal-100: #b2dfdb;
+  --md-teal-200: #80cbc4;
+  --md-teal-300: #4db6ac;
+  --md-teal-400: #26a69a;
+  --md-teal-500: #009688;
+  --md-teal-600: #00897b;
+  --md-teal-700: #00796b;
+  --md-teal-800: #00695c;
+  --md-teal-900: #004d40;
+  --md-teal-A100: #a7ffeb;
+  --md-teal-A200: #64ffda;
+  --md-teal-A400: #1de9b6;
+  --md-teal-A700: #00bfa5;
+
+  --md-green-50: #e8f5e9;
+  --md-green-100: #c8e6c9;
+  --md-green-200: #a5d6a7;
+  --md-green-300: #81c784;
+  --md-green-400: #66bb6a;
+  --md-green-500: #4caf50;
+  --md-green-600: #43a047;
+  --md-green-700: #388e3c;
+  --md-green-800: #2e7d32;
+  --md-green-900: #1b5e20;
+  --md-green-A100: #b9f6ca;
+  --md-green-A200: #69f0ae;
+  --md-green-A400: #00e676;
+  --md-green-A700: #00c853;
+
+  --md-light-green-50: #f1f8e9;
+  --md-light-green-100: #dcedc8;
+  --md-light-green-200: #c5e1a5;
+  --md-light-green-300: #aed581;
+  --md-light-green-400: #9ccc65;
+  --md-light-green-500: #8bc34a;
+  --md-light-green-600: #7cb342;
+  --md-light-green-700: #689f38;
+  --md-light-green-800: #558b2f;
+  --md-light-green-900: #33691e;
+  --md-light-green-A100: #ccff90;
+  --md-light-green-A200: #b2ff59;
+  --md-light-green-A400: #76ff03;
+  --md-light-green-A700: #64dd17;
+
+  --md-lime-50: #f9fbe7;
+  --md-lime-100: #f0f4c3;
+  --md-lime-200: #e6ee9c;
+  --md-lime-300: #dce775;
+  --md-lime-400: #d4e157;
+  --md-lime-500: #cddc39;
+  --md-lime-600: #c0ca33;
+  --md-lime-700: #afb42b;
+  --md-lime-800: #9e9d24;
+  --md-lime-900: #827717;
+  --md-lime-A100: #f4ff81;
+  --md-lime-A200: #eeff41;
+  --md-lime-A400: #c6ff00;
+  --md-lime-A700: #aeea00;
+
+  --md-yellow-50: #fffde7;
+  --md-yellow-100: #fff9c4;
+  --md-yellow-200: #fff59d;
+  --md-yellow-300: #fff176;
+  --md-yellow-400: #ffee58;
+  --md-yellow-500: #ffeb3b;
+  --md-yellow-600: #fdd835;
+  --md-yellow-700: #fbc02d;
+  --md-yellow-800: #f9a825;
+  --md-yellow-900: #f57f17;
+  --md-yellow-A100: #ffff8d;
+  --md-yellow-A200: #ffff00;
+  --md-yellow-A400: #ffea00;
+  --md-yellow-A700: #ffd600;
+
+  --md-amber-50: #fff8e1;
+  --md-amber-100: #ffecb3;
+  --md-amber-200: #ffe082;
+  --md-amber-300: #ffd54f;
+  --md-amber-400: #ffca28;
+  --md-amber-500: #ffc107;
+  --md-amber-600: #ffb300;
+  --md-amber-700: #ffa000;
+  --md-amber-800: #ff8f00;
+  --md-amber-900: #ff6f00;
+  --md-amber-A100: #ffe57f;
+  --md-amber-A200: #ffd740;
+  --md-amber-A400: #ffc400;
+  --md-amber-A700: #ffab00;
+
+  --md-orange-50: #fff3e0;
+  --md-orange-100: #ffe0b2;
+  --md-orange-200: #ffcc80;
+  --md-orange-300: #ffb74d;
+  --md-orange-400: #ffa726;
+  --md-orange-500: #ff9800;
+  --md-orange-600: #fb8c00;
+  --md-orange-700: #f57c00;
+  --md-orange-800: #ef6c00;
+  --md-orange-900: #e65100;
+  --md-orange-A100: #ffd180;
+  --md-orange-A200: #ffab40;
+  --md-orange-A400: #ff9100;
+  --md-orange-A700: #ff6d00;
+
+  --md-deep-orange-50: #fbe9e7;
+  --md-deep-orange-100: #ffccbc;
+  --md-deep-orange-200: #ffab91;
+  --md-deep-orange-300: #ff8a65;
+  --md-deep-orange-400: #ff7043;
+  --md-deep-orange-500: #ff5722;
+  --md-deep-orange-600: #f4511e;
+  --md-deep-orange-700: #e64a19;
+  --md-deep-orange-800: #d84315;
+  --md-deep-orange-900: #bf360c;
+  --md-deep-orange-A100: #ff9e80;
+  --md-deep-orange-A200: #ff6e40;
+  --md-deep-orange-A400: #ff3d00;
+  --md-deep-orange-A700: #dd2c00;
+
+  --md-brown-50: #efebe9;
+  --md-brown-100: #d7ccc8;
+  --md-brown-200: #bcaaa4;
+  --md-brown-300: #a1887f;
+  --md-brown-400: #8d6e63;
+  --md-brown-500: #795548;
+  --md-brown-600: #6d4c41;
+  --md-brown-700: #5d4037;
+  --md-brown-800: #4e342e;
+  --md-brown-900: #3e2723;
+
+  --md-grey-50: #fafafa;
+  --md-grey-100: #f5f5f5;
+  --md-grey-200: #eeeeee;
+  --md-grey-300: #e0e0e0;
+  --md-grey-400: #bdbdbd;
+  --md-grey-500: #9e9e9e;
+  --md-grey-600: #757575;
+  --md-grey-700: #616161;
+  --md-grey-800: #424242;
+  --md-grey-900: #212121;
+
+  --md-blue-grey-50: #eceff1;
+  --md-blue-grey-100: #cfd8dc;
+  --md-blue-grey-200: #b0bec5;
+  --md-blue-grey-300: #90a4ae;
+  --md-blue-grey-400: #78909c;
+  --md-blue-grey-500: #607d8b;
+  --md-blue-grey-600: #546e7a;
+  --md-blue-grey-700: #455a64;
+  --md-blue-grey-800: #37474f;
+  --md-blue-grey-900: #263238;
+  
+/*#endregion*/
+  --md-shadow-key-umbra-opacity: 0.2;
+  --md-shadow-key-penumbra-opacity: 0.14;
+  --md-shadow-ambient-shadow-opacity: 0.12;
+
+  --jp-border-width: 1px;
+  --jp-border-color0: var(--md-grey-700);
+  --jp-border-color1: var(--md-grey-500);
+  --jp-border-color2: var(--md-grey-300);
+  --jp-border-color3: var(--md-grey-100);
+  --jp-inverse-border-color: var(--md-grey-600);
+  --jp-border-radius: 2px;
+  /* UI Fonts
+
+  The UI font CSS variables are used for the typography all of the JupyterLab
+  user interface elements that are not directly user generated content.
+  */
+
+  --jp-ui-font-scale-factor: 1.2;
+  --jp-ui-font-size0: calc(
+    var(--jp-ui-font-size1) / var(--jp-ui-font-scale-factor)
+  );
+  --jp-ui-font-size1: 13px; /* Base font size */
+  --jp-ui-font-size2: calc(
+    var(--jp-ui-font-size1) * var(--jp-ui-font-scale-factor)
+  );
+  --jp-ui-font-size3: calc(
+    var(--jp-ui-font-size2) * var(--jp-ui-font-scale-factor)
+  );
+  --jp-ui-icon-font-size: 14px; /* Ensures px perfect FontAwesome icons */
+  --jp-ui-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --jp-ui-font-color0: rgba(255, 255, 255, 1);
+  --jp-ui-font-color1: rgba(255, 255, 255, 0.8);
+  --jp-ui-font-color2: rgba(255, 255, 255, 0.5);
+  --jp-ui-font-color3: rgba(0, 0, 0, 0.3);
+/*#endregion*/
+  /* Use these against the brand/accent/warn/error colors.
+     These will typically go from light to darker, in both a dark and light theme
+   */
+
+  --jp-ui-inverse-font-color0: rgba(255, 255, 255, 1);
+  --jp-ui-inverse-font-color1: rgba(255, 255, 255, 1);
+  --jp-ui-inverse-font-color2: rgba(255, 255, 255, 0.7);
+  --jp-ui-inverse-font-color3: rgba(255, 255, 255, 0.5);
+
+  /* Content Fonts
+
+  Content font variables are used for typography of user generated content.
+  */
+
+  --jp-content-font-size: 13px;
+  --jp-content-line-height: 1.5;
+  --jp-content-font-color0: black;
+  --jp-content-font-color1: white;
+  --jp-content-font-color2: var(--md-grey-700);
+  --jp-content-font-color3: var(--md-grey-500);
+  --jp-content-link-hover-color: var(--md-grey-900);
+
+
+
+
+
+
+
+
+
+  --jp-private-cell-scrolling-output-offset: 5px;
+  --jp-ui-font-scale-factor: 1.2;
+  --jp-ui-font-size0: calc(
+    var(--jp-ui-font-size1) / var(--jp-ui-font-scale-factor)
+  );
+  --jp-ui-font-size1: 13px; /* Base font size */
+  --jp-ui-font-size2: calc(
+    var(--jp-ui-font-size1) * var(--jp-ui-font-scale-factor)
+  );
+  --jp-ui-font-size3: calc(
+    var(--jp-ui-font-size2) * var(--jp-ui-font-scale-factor)
+  );
+
+  --jp-code-font-size: 13px;
+  --jp-code-line-height: 1.307;
+  --jp-code-padding: 5px;
+  --jp-code-font-family: monospace;
+
+  /* Layout
+
+  The following are the main layout colors use in JupyterLab. In a light
+  theme these would go from light to dark.
+  */
+  --jp-layout-color0: blue;
+  --jp-layout-color1: green;
+  --jp-layout-color2: var(--md-grey-200);
+  --jp-layout-color3: var(--md-grey-900);
+
+
+  --jp-inverse-layout-color0: white;
+  --jp-inverse-layout-color1: white;
+  --jp-inverse-layout-color2: var(--md-grey-200);
+  --jp-inverse-layout-color3: white;
+  --jp-inverse-layout-color4: var(--md-grey-600);
+
+  /* Brand/accent */
+
+  --jp-brand-color0: var(--md-blue-700);
+  --jp-brand-color1: var(--md-blue-500);
+  --jp-brand-color2: var(--md-blue-300);
+  --jp-brand-color3: var(--md-blue-100);
+  --jp-accent-color3: var(--md-green-100);
+  --jp-accent-color0: var(--md-green-700);
+  --jp-accent-color1: var(--md-green-500);
+  --jp-accent-color2: var(--md-green-300);
+  --jp-accent-color3: var(--md-green-100);
+
+  /* State colors (warn, error, success, info) */
+
+  --jp-warn-color0: var(--md-orange-700);
+  --jp-warn-color1: var(--md-orange-500);
+  --jp-warn-color2: var(--md-orange-300);
+  --jp-warn-color3: var(--md-orange-100);
+
+  --jp-error-color0: var(--md-red-700);
+  --jp-error-color1: var(--md-red-500);
+  --jp-error-color2: var(--md-red-300);
+  --jp-error-color3: var(--md-red-100);
+
+  --jp-success-color0: var(--md-green-700);
+  --jp-success-color1: var(--md-green-500);
+  --jp-success-color2: var(--md-green-300);
+  --jp-success-color3: var(--md-green-100);
+
+  --jp-info-color0: var(--md-cyan-700);
+  --jp-info-color1: var(--md-cyan-500);
+  --jp-info-color2: var(--md-cyan-300);
+  --jp-info-color3: var(--md-cyan-100);
+
+  /* Cell specific styles */
+
+  --jp-cell-padding: 5px;
+  --jp-cell-editor-background: #ffffffff;
+  --jp-cell-editor-border-color: #cfcfcf;
+  --jp-cell-editor-background-edit: var(--jp-ui-layout-color1);
+  --jp-cell-editor-border-color-edit: var(--jp-brand-color1);
+  --jp-cell-prompt-width: 100px;
+  --jp-cell-prompt-font-family: 'Roboto Mono', monospace;
+  --jp-cell-prompt-letter-spacing: 0px;
+  --jp-cell-prompt-opacity: 1;
+  --jp-cell-prompt-opacity-not-active: 0.4;
+  --jp-cell-prompt-font-color-not-active: var(--md-grey-700);
+  /* A custom blend of MD grey and blue 600
+   * See https://meyerweb.com/eric/tools/color-blend/#546E7A:1E88E5:5:hex */
+  --jp-cell-inprompt-font-color: #307fc1;
+  /* A custom blend of MD grey and orange 600
+   * https://meyerweb.com/eric/tools/color-blend/#546E7A:F4511E:5:hex */
+  --jp-cell-outprompt-font-color: #bf5b3d;
+
+  /* Notebook specific styles */
+
+  --jp-notebook-padding: 10px;
+  --jp-notebook-scroll-padding: 100px;
+
+  /* Console specific styles */
+
+  --jp-console-background: var(--md-grey-900);
+
+  /* Toolbar specific styles */
+
+  --jp-toolbar-border-color: var(--md-grey-400);
+  --jp-toolbar-micro-height: 8px;
+  --jp-toolbar-background: var(--jp-layout-color0);
+  --jp-toolbar-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.24);
+  --jp-toolbar-header-margin: 4px 4px 0px 4px;
+  --jp-toolbar-active-background: var(--md-grey-300);
+  /* This is the padding value to fill the gaps between lines containing spans with background color. */
+  --jp-private-code-span-padding: calc(
+    (var(--jp-code-line-height) - 1) * var(--jp-code-font-size) / 2
+  
+  
+  
+  --jp-widgets-color: var(--jp-content-font-color1);
+  --jp-widgets-label-color: var(--jp-widgets-color);
+  --jp-widgets-readout-color: var(--jp-widgets-color);
+  --jp-widgets-font-size: var(--jp-ui-font-size1);
+  --jp-widgets-margin: 2px;
+  --jp-widgets-inline-height: 28px;
+  --jp-widgets-inline-width: 300px;
+  --jp-widgets-inline-width-short: calc(
+    var(--jp-widgets-inline-width) / 2 - var(--jp-widgets-margin)
+  );
+  --jp-widgets-inline-width-tiny: calc(
+    var(--jp-widgets-inline-width-short) / 2 - var(--jp-widgets-margin)
+  );
+  --jp-widgets-inline-margin: 4px; /* margin between inline elements */
+  --jp-widgets-inline-label-width: 80px;
+  --jp-widgets-border-width: var(--jp-border-width);
+  --jp-widgets-vertical-height: 200px;
+  --jp-widgets-horizontal-tab-height: 24px;
+  --jp-widgets-horizontal-tab-width: 144px;
+  --jp-widgets-horizontal-tab-top-border: 2px;
+  --jp-widgets-progress-thickness: 20px;
+  --jp-widgets-container-padding: 15px;
+  --jp-widgets-input-padding: 4px;
+  --jp-widgets-radio-item-height-adjustment: 8px;
+  --jp-widgets-radio-item-height: calc(
+    var(--jp-widgets-inline-height) -
+      var(--jp-widgets-radio-item-height-adjustment)
+  );
+  --jp-widgets-slider-track-thickness: 4px;
+  --jp-widgets-slider-border-width: var(--jp-widgets-border-width);
+  --jp-widgets-slider-handle-size: 16px;
+  --jp-widgets-slider-handle-border-color: var(--jp-border-color1);
+  --jp-widgets-slider-handle-background-color: var(--jp-layout-color1);
+  --jp-widgets-slider-active-handle-color: var(--jp-brand-color1);
+  --jp-widgets-menu-item-height: 24px;
+  --jp-widgets-dropdown-arrow: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAxOCAxOCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTggMTg7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDpub25lO30KPC9zdHlsZT4KPHBhdGggZD0iTTUuMiw1LjlMOSw5LjdsMy44LTMuOGwxLjIsMS4ybC00LjksNWwtNC45LTVMNS4yLDUuOXoiLz4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTAtMC42aDE4djE4SDBWLTAuNnoiLz4KPC9zdmc+Cg');
+  --jp-widgets-input-color: var(--jp-ui-font-color1);
+  --jp-widgets-input-background-color: var(--jp-layout-color1);
+  --jp-widgets-input-border-color: var(--jp-border-color1);
+  --jp-widgets-input-focus-border-color: var(--jp-brand-color2);
+  --jp-widgets-input-border-width: var(--jp-widgets-border-width);
+  --jp-widgets-disabled-opacity: 0.6;
+
+  
+    );
+}
+
+.jp-Completer {
+  --jp-completer-type-background0: transparent;
+  --jp-completer-type-background1: #1f77b4;
+  --jp-completer-type-background2: #ff7f0e;
+  --jp-completer-type-background3: #2ca02c;
+  --jp-completer-type-background4: #d62728;
+  --jp-completer-type-background5: #9467bd;
+  --jp-completer-type-background6: #8c564b;
+  --jp-completer-type-background7: #e377c2;
+  --jp-completer-type-background8: #7f7f7f;
+  --jp-completer-type-background9: #bcbd22;
+  --jp-completer-type-background10: #17becf;
+}
+
+.jp-RenderedText {
+  text-align: left;
+  padding-left: var(--jp-code-padding);
+  line-height: var(--jp-code-line-height);
+  font-family: var(--jp-code-font-family);
+}
+
+.jp-ThemedContainer .jp-RenderedText pre,
+.jp-ThemedContainer .jp-RenderedJavaScript pre,
+.jp-ThemedContainer .jp-RenderedHTMLCommon pre {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-code-font-size);
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.jp-RenderedText pre a[href]:link {
+  text-decoration: none;
+  color: var(--jp-content-link-color);
+}
+
+.jp-RenderedText pre a[href]:hover {
+  text-decoration: underline;
+  color: var(--jp-content-link-hover-color, var(--jp-content-link-color));
+}
+
+.jp-RenderedText pre a[href]:visited {
+  text-decoration: none;
+  color: var(--jp-content-link-visited-color, var(--jp-content-link-color));
+}
+
+/* console foregrounds and backgrounds */
+.jp-RenderedText pre .ansi-black-fg {
+  color: #3e424d;
+}
+
+.jp-RenderedText pre .ansi-red-fg {
+  color: #e75c58;
+}
+
+.jp-RenderedText pre .ansi-green-fg {
+  color: #00a250;
+}
+
+.jp-RenderedText pre .ansi-yellow-fg {
+  color: #ddb62b;
+}
+
+.jp-RenderedText pre .ansi-blue-fg {
+  color: #208ffb;
+}
+
+.jp-RenderedText pre .ansi-magenta-fg {
+  color: #d160c4;
+}
+
+.jp-RenderedText pre .ansi-cyan-fg {
+  color: #60c6c8;
+}
+
+.jp-RenderedText pre .ansi-white-fg {
+  color: #c5c1b4;
+}
+
+.jp-RenderedText pre .ansi-black-bg {
+  background-color: #3e424d;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-red-bg {
+  background-color: #e75c58;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-green-bg {
+  background-color: #00a250;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-yellow-bg {
+  background-color: #ddb62b;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-blue-bg {
+  background-color: #208ffb;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-magenta-bg {
+  background-color: #d160c4;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-cyan-bg {
+  background-color: #60c6c8;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-white-bg {
+  background-color: #c5c1b4;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-black-intense-fg {
+  color: #282c36;
+}
+
+.jp-RenderedText pre .ansi-red-intense-fg {
+  color: #b22b31;
+}
+
+.jp-RenderedText pre .ansi-green-intense-fg {
+  color: #007427;
+}
+
+.jp-RenderedText pre .ansi-yellow-intense-fg {
+  color: #b27d12;
+}
+
+.jp-RenderedText pre .ansi-blue-intense-fg {
+  color: #0065ca;
+}
+
+.jp-RenderedText pre .ansi-magenta-intense-fg {
+  color: #a03196;
+}
+
+.jp-RenderedText pre .ansi-cyan-intense-fg {
+  color: #258f8f;
+}
+
+.jp-RenderedText pre .ansi-white-intense-fg {
+  color: #a1a6b2;
+}
+
+.jp-RenderedText pre .ansi-black-intense-bg {
+  background-color: #282c36;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-red-intense-bg {
+  background-color: #b22b31;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-green-intense-bg {
+  background-color: #007427;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-yellow-intense-bg {
+  background-color: #b27d12;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-blue-intense-bg {
+  background-color: #0065ca;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-magenta-intense-bg {
+  background-color: #a03196;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-cyan-intense-bg {
+  background-color: #258f8f;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-white-intense-bg {
+  background-color: #a1a6b2;
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-default-inverse-fg {
+  color: var(--jp-ui-inverse-font-color0);
+}
+
+.jp-RenderedText pre .ansi-default-inverse-bg {
+  background-color: var(--jp-inverse-layout-color0);
+  padding: var(--jp-private-code-span-padding) 0;
+}
+
+.jp-RenderedText pre .ansi-bold {
+  font-weight: bold;
+}
+
+.jp-RenderedText pre .ansi-underline {
+  text-decoration: underline;
+}
+
+.jp-RenderedText[data-mime-type='application/vnd.jupyter.stderr'] {
+  background: var(--jp-rendermime-error-background);
+  padding-top: var(--jp-code-padding);
+}
+
+/* fix illegible yellow text with yellow background in exception stacktrace */
+.jp-RenderedText pre .ansi-yellow-bg.ansi-yellow-fg {
+  color: black;
+}
+
+/*-----------------------------------------------------------------------------
+| RenderedLatex
+|----------------------------------------------------------------------------*/
+
+.jp-RenderedLatex {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-content-font-size1);
+  line-height: var(--jp-content-line-height);
+}
+
+/* Left-justify outputs.*/
+.jp-OutputArea-output.jp-RenderedLatex {
+  padding: var(--jp-code-padding);
+  text-align: left;
+}
+
+
+/*-----------------------------------------------------------------------------
+| RenderedHTML
+|----------------------------------------------------------------------------*/
+
+.jp-RenderedHTMLCommon {
+  color: var(--jp-content-font-color1);
+  font-family: var(--jp-content-font-family);
+  font-size: var(--jp-content-font-size1);
+  line-height: var(--jp-content-line-height);
+
+  /* Give a bit more R padding on Markdown text to keep line lengths reasonable */
+  padding-right: 20px;
+}
+
+.jp-RenderedHTMLCommon em {
+  font-style: italic;
+}
+
+.jp-RenderedHTMLCommon strong {
+  font-weight: bold;
+}
+
+.jp-RenderedHTMLCommon u {
+  text-decoration: underline;
+}
+
+.jp-RenderedHTMLCommon a:link {
+  text-decoration: none;
+  color: var(--jp-content-link-color);
+}
+
+.jp-RenderedHTMLCommon a:hover {
+  text-decoration: underline;
+  color: var(--jp-content-link-hover-color, var(--jp-content-link-color));
+}
+
+.jp-RenderedHTMLCommon a:visited {
+  text-decoration: none;
+  color: var(--jp-content-link-visited-color, var(--jp-content-link-color));
+}
+
+/* Headings */
+
+.jp-RenderedHTMLCommon h1,
+.jp-RenderedHTMLCommon h2,
+.jp-RenderedHTMLCommon h3,
+.jp-RenderedHTMLCommon h4,
+.jp-RenderedHTMLCommon h5,
+.jp-RenderedHTMLCommon h6 {
+  line-height: var(--jp-content-heading-line-height);
+  font-weight: var(--jp-content-heading-font-weight);
+  font-style: normal;
+  margin: var(--jp-content-heading-margin-top) 0
+    var(--jp-content-heading-margin-bottom) 0;
+  scroll-margin-top: var(--jp-content-heading-margin-top);
+}
+
+.jp-RenderedHTMLCommon h1:first-child,
+.jp-RenderedHTMLCommon h2:first-child,
+.jp-RenderedHTMLCommon h3:first-child,
+.jp-RenderedHTMLCommon h4:first-child,
+.jp-RenderedHTMLCommon h5:first-child,
+.jp-RenderedHTMLCommon h6:first-child {
+  margin-top: calc(0.5 * var(--jp-content-heading-margin-top));
+  scroll-margin-top: calc(0.5 * var(--jp-content-heading-margin-top));
+}
+
+.jp-RenderedHTMLCommon h1:last-child,
+.jp-RenderedHTMLCommon h2:last-child,
+.jp-RenderedHTMLCommon h3:last-child,
+.jp-RenderedHTMLCommon h4:last-child,
+.jp-RenderedHTMLCommon h5:last-child,
+.jp-RenderedHTMLCommon h6:last-child {
+  margin-bottom: calc(0.5 * var(--jp-content-heading-margin-bottom));
+}
+
+.jp-RenderedHTMLCommon h1 {
+  font-size: var(--jp-content-font-size5);
+}
+
+.jp-RenderedHTMLCommon h2 {
+  font-size: var(--jp-content-font-size4);
+}
+
+.jp-RenderedHTMLCommon h3 {
+  font-size: var(--jp-content-font-size3);
+}
+
+.jp-RenderedHTMLCommon h4 {
+  font-size: var(--jp-content-font-size2);
+}
+
+.jp-RenderedHTMLCommon h5 {
+  font-size: var(--jp-content-font-size1);
+}
+
+.jp-RenderedHTMLCommon h6 {
+  font-size: var(--jp-content-font-size0);
+}
+
+/* Lists */
+
+/* stylelint-disable selector-max-type, selector-max-compound-selectors */
+
+.jp-RenderedHTMLCommon ul:not(.list-inline),
+.jp-RenderedHTMLCommon ol:not(.list-inline) {
+  padding-left: 2em;
+}
+
+.jp-RenderedHTMLCommon ul {
+  list-style: disc;
+}
+
+.jp-RenderedHTMLCommon ul ul {
+  list-style: square;
+}
+
+.jp-RenderedHTMLCommon ul ul ul {
+  list-style: circle;
+}
+
+.jp-RenderedHTMLCommon ol {
+  list-style: decimal;
+}
+
+.jp-RenderedHTMLCommon ol ol {
+  list-style: upper-alpha;
+}
+
+.jp-RenderedHTMLCommon ol ol ol {
+  list-style: lower-alpha;
+}
+
+.jp-RenderedHTMLCommon ol ol ol ol {
+  list-style: lower-roman;
+}
+
+.jp-RenderedHTMLCommon ol ol ol ol ol {
+  list-style: decimal;
+}
+
+.jp-RenderedHTMLCommon ol,
+.jp-RenderedHTMLCommon ul {
+  margin-bottom: 1em;
+}
+
+.jp-RenderedHTMLCommon ul ul,
+.jp-RenderedHTMLCommon ul ol,
+.jp-RenderedHTMLCommon ol ul,
+.jp-RenderedHTMLCommon ol ol {
+  margin-bottom: 0;
+}
+
+/* stylelint-enable selector-max-type, selector-max-compound-selectors */
+
+.jp-RenderedHTMLCommon hr {
+  color: var(--jp-border-color2);
+  background-color: var(--jp-border-color1);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.jp-ThemedContainer .jp-RenderedHTMLCommon > pre {
+  margin: 1.5em 2em;
+}
+
+.jp-ThemedContainer .jp-RenderedHTMLCommon pre,
+.jp-ThemedContainer .jp-RenderedHTMLCommon code {
+  border: 0;
+  background-color: var(--jp-layout-color0);
+  color: var(--jp-content-font-color1);
+  font-family: var(--jp-code-font-family);
+  font-size: inherit;
+  line-height: var(--jp-code-line-height);
+  padding: 0;
+  white-space: pre-wrap;
+}
+
+.jp-ThemedContainer .jp-RenderedHTMLCommon :not(pre) > code {
+  background-color: var(--jp-layout-color2);
+  padding: 1px 5px;
+}
+
+/* Tables */
+
+.jp-RenderedHTMLCommon table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+  color: var(--jp-ui-font-color1);
+  font-size: var(--jp-ui-font-size1);
+  table-layout: fixed;
+  margin-left: auto;
+  margin-bottom: 1em;
+  margin-right: auto;
+}
+
+.jp-RenderedHTMLCommon thead {
+  border-bottom: var(--jp-border-width) solid var(--jp-border-color1);
+  vertical-align: bottom;
+}
+
+.jp-RenderedHTMLCommon td,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon tr {
+  vertical-align: middle;
+  padding: 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+
+.jp-RenderedMarkdown.jp-RenderedHTMLCommon td,
+.jp-RenderedMarkdown.jp-RenderedHTMLCommon th {
+  max-width: none;
+}
+
+:not(.jp-RenderedMarkdown).jp-RenderedHTMLCommon td,
+:not(.jp-RenderedMarkdown).jp-RenderedHTMLCommon th,
+:not(.jp-RenderedMarkdown).jp-RenderedHTMLCommon tr {
+  text-align: right;
+}
+
+.jp-RenderedHTMLCommon th {
+  font-weight: bold;
+}
+
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd) {
+  background: var(--jp-layout-color0);
+}
+
+.jp-RenderedHTMLCommon tbody tr:nth-child(even) {
+  background: var(--jp-rendermime-table-row-background);
+}
+
+.jp-RenderedHTMLCommon tbody tr:hover {
+  background: var(--jp-rendermime-table-row-hover-background);
+}
+
+.jp-RenderedHTMLCommon p {
+  text-align: left;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.jp-RenderedHTMLCommon img {
+  -moz-force-broken-image-icon: 1;
+}
+
+/* Restrict to direct children as other images could be nested in other content. */
+.jp-RenderedHTMLCommon > img {
+  display: block;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1em;
+}
+
+/* Change color behind transparent images if they need it... */
+[data-jp-theme-light='false'] .jp-RenderedImage img.jp-needs-light-background {
+  background-color: var(--jp-inverse-layout-color1);
+}
+
+[data-jp-theme-light='true'] .jp-RenderedImage img.jp-needs-dark-background {
+  background-color: var(--jp-inverse-layout-color1);
+}
+
+.jp-RenderedHTMLCommon img,
+.jp-RenderedImage img,
+.jp-RenderedHTMLCommon svg,
+.jp-RenderedSVG svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.jp-RenderedHTMLCommon img.jp-mod-unconfined,
+.jp-RenderedImage img.jp-mod-unconfined,
+.jp-RenderedHTMLCommon svg.jp-mod-unconfined,
+.jp-RenderedSVG svg.jp-mod-unconfined {
+  max-width: none;
+}
+
+.jp-RenderedHTMLCommon .alert {
+  padding: var(--jp-notebook-padding);
+  border: var(--jp-border-width) solid transparent;
+  border-radius: var(--jp-border-radius);
+  margin-bottom: 1em;
+  color: white;
+}
+
+.jp-RenderedHTMLCommon .alert-info {
+  color: var(--jp-info-color0);
+  background-color: var(--jp-info-color3);
+  border-color: var(--jp-info-color2);
+}
+
+.jp-RenderedHTMLCommon .alert-info hr {
+  border-color: var(--jp-info-color3);
+}
+
+.jp-RenderedHTMLCommon .alert-info > p:last-child,
+.jp-RenderedHTMLCommon .alert-info > ul:last-child {
+  margin-bottom: 0;
+}
+
+.jp-RenderedHTMLCommon .alert-warning {
+  color: var(--jp-warn-color0);
+  background-color: var(--jp-warn-color3);
+  border-color: var(--jp-warn-color2);
+}
+
+.jp-RenderedHTMLCommon .alert-warning hr {
+  border-color: var(--jp-warn-color3);
+}
+
+.jp-RenderedHTMLCommon .alert-warning > p:last-child,
+.jp-RenderedHTMLCommon .alert-warning > ul:last-child {
+  margin-bottom: 0;
+}
+
+.jp-RenderedHTMLCommon .alert-success {
+  color: var(--jp-success-color0);
+  background-color: var(--jp-success-color3);
+  border-color: var(--jp-success-color2);
+}
+
+.jp-RenderedHTMLCommon .alert-success hr {
+  border-color: var(--jp-success-color3);
+}
+
+.jp-RenderedHTMLCommon .alert-success > p:last-child,
+.jp-RenderedHTMLCommon .alert-success > ul:last-child {
+  margin-bottom: 0;
+}
+
+.jp-RenderedHTMLCommon .alert-danger {
+  color: var(--jp-error-color0);
+  background-color: var(--jp-error-color3);
+  border-color: var(--jp-error-color2);
+}
+
+.jp-RenderedHTMLCommon .alert-danger hr {
+  border-color: var(--jp-error-color3);
+}
+
+.jp-RenderedHTMLCommon .alert-danger > p:last-child,
+.jp-RenderedHTMLCommon .alert-danger > ul:last-child {
+  margin-bottom: 0;
+}
+
+.jp-RenderedHTMLCommon blockquote {
+  margin: 1em 2em;
+  padding: 0 1em;
+  border-left: 5px solid var(--jp-border-color2);
+}
+
+a.jp-InternalAnchorLink {
+  visibility: hidden;
+  margin-left: 8px;
+  color: var(--md-blue-800, #1565c0);
+}
+
+h1:hover .jp-InternalAnchorLink,
+h2:hover .jp-InternalAnchorLink,
+h3:hover .jp-InternalAnchorLink,
+h4:hover .jp-InternalAnchorLink,
+h5:hover .jp-InternalAnchorLink,
+h6:hover .jp-InternalAnchorLink {
+  visibility: visible;
+}
+
+.jp-ThemedContainer .jp-RenderedHTMLCommon kbd {
+  background-color: var(--jp-accent-color0);
+  border: 1px solid var(--jp-border-color0);
+  border-bottom-color: var(--jp-border-color2);
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  font-size: var(--jp-ui-font-size0);
+  line-height: 1em;
+  padding: 0.2em 0.5em;
+}
+
+/* Most direct children of .jp-RenderedHTMLCommon have a margin-bottom of 1.0.
+ * At the bottom of cells this is a bit too much as there is also spacing
+ * between cells. Going all the way to 0 gets too tight between markdown and
+ * code cells.
+ */
+.jp-RenderedHTMLCommon > *:last-child {
+  margin-bottom: 0.5em;
+}
+.c
+
+
+
+.jupyter-widgets {
+  margin: var(--jp-widgets-margin);
+  box-sizing: border-box;
+  color: var(--jp-widgets-color);
+  overflow: visible;
+}
+
+
+.jupyter-widget-tagsinput {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  overflow: auto;
+
+  cursor: text;
+}
+
+.jupyter-widget-tag {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-size: var(--jp-widgets-font-size);
+
+  height: calc(var(--jp-widgets-inline-height) - 2px);
+  border: 0px solid;
+  line-height: calc(var(--jp-widgets-inline-height) - 2px);
+  box-shadow: none;
+
+  color: var(--jp-ui-font-color1);
+  background-color: var(--jp-layout-color2);
+  border-color: var(--jp-border-color2);
+  border: none;
+  user-select: none;
+
+  cursor: grab;
+  transition: margin-left 200ms;
+  margin: 1px 1px 1px 1px;
+}
+
+.jupyter-widget-tag.mod-active {
+  /* MD Lite 4dp shadow */
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, var(--md-shadow-key-penumbra-opacity)),
+    0 1px 10px 0 rgba(0, 0, 0, var(--md-shadow-ambient-shadow-opacity)),
+    0 2px 4px -1px rgba(0, 0, 0, var(--md-shadow-key-umbra-opacity));
+  color: var(--jp-ui-font-color1);
+  background-color: var(--jp-layout-color3);
+}
+
+.jupyter-widget-colortag {
+  color: var(--jp-inverse-ui-font-color1);
+}
+
+.jupyter-widget-colortag.mod-active {
+  color: var(--jp-inverse-ui-font-color0);
+}
+
+.jupyter-widget-taginput {
+  color: var(--jp-ui-font-color0);
+  background-color: var(--jp-layout-color0);
+
+  cursor: text;
+  text-align: left;
+}
+
+.jupyter-widget-taginput:focus {
+  outline: none;
+}
+
+.jupyter-widget-tag-close {
+  margin-left: var(--jp-widgets-inline-margin);
+  padding: 2px 0px 2px 2px;
+}
+
+.jupyter-widget-tag-close:hover {
+  cursor: pointer;
+}
+
+/* Tag "Primary" Styling */
+
+.jupyter-widget-tag.mod-primary {
+  color: var(--jp-inverse-ui-font-color1);
+  background-color: var(--jp-brand-color1);
+}
+
+.jupyter-widget-tag.mod-primary.mod-active {
+  color: var(--jp-inverse-ui-font-color0);
+  background-color: var(--jp-brand-color0);
+}
+
+/* Tag "Success" Styling */
+
+.jupyter-widget-tag.mod-success {
+  color: var(--jp-inverse-ui-font-color1);
+  background-color: var(--jp-success-color1);
+}
+
+.jupyter-widget-tag.mod-success.mod-active {
+  color: var(--jp-inverse-ui-font-color0);
+  background-color: var(--jp-success-color0);
+}
+
+/* Tag "Info" Styling */
+
+.jupyter-widget-tag.mod-info {
+  color: var(--jp-inverse-ui-font-color1);
+  background-color: var(--jp-info-color1);
+}
+
+.jupyter-widget-tag.mod-info.mod-active {
+  color: var(--jp-inverse-ui-font-color0);
+  background-color: var(--jp-info-color0);
+}
+
+/* Tag "Warning" Styling */
+
+.jupyter-widget-tag.mod-warning {
+  color: var(--jp-inverse-ui-font-color1);
+  background-color: var(--jp-warn-color1);
+}
+
+.jupyter-widget-tag.mod-warning.mod-active {
+  color: var(--jp-inverse-ui-font-color0);
+  background-color: var(--jp-warn-color0);
+}
+
+/* Tag "Danger" Styling */
+
+.jupyter-widget-tag.mod-danger {
+  color: var(--jp-inverse-ui-font-color1);
+  background-color: var(--jp-error-color1);
+}
+
+.jupyter-widget-tag.mod-danger.mod-active {
+  color: var(--jp-inverse-ui-font-color0);
+  background-color: var(--jp-error-color0);
+}
+
+/* General Button Styling */
+
+.jupyter-button {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-size: var(--jp-widgets-font-size);
+  cursor: pointer;
+
+  height: var(--jp-widgets-inline-height);
+  border: 0px solid;
+  line-height: var(--jp-widgets-inline-height);
+  box-shadow: none;
+
+  color: var(--jp-ui-font-color1);
+  background-color: var(--jp-layout-color2);
+  border-color: var(--jp-border-color2);
+  border: none;
+  user-select: none;
+}
+
+.jupyter-button i.fa {
+  margin-right: var(--jp-widgets-inline-margin);
+  pointer-events: none;
+}
+
+.jupyter-button:empty:before {
+  content: '\200b'; /* zero-width space */
+}
+
+.jupyter-widgets.jupyter-button:disabled {
+  opacity: var(--jp-widgets-disabled-opacity);
+}
+
+.jupyter-button i.fa.center {
+  margin-right: 0;
+}
+
+.jupyter-button:hover:enabled,
+.jupyter-button:focus:enabled {
+  /* MD Lite 2dp shadow */
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, var(--md-shadow-key-penumbra-opacity)),
+    0 3px 1px -2px rgba(0, 0, 0, var(--md-shadow-key-umbra-opacity)),
+    0 1px 5px 0 rgba(0, 0, 0, var(--md-shadow-ambient-shadow-opacity));
+}
+
+.jupyter-button:active,
+.jupyter-button.mod-active {
+  /* MD Lite 4dp shadow */
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, var(--md-shadow-key-penumbra-opacity)),
+    0 1px 10px 0 rgba(0, 0, 0, var(--md-shadow-ambient-shadow-opacity)),
+    0 2px 4px -1px rgba(0, 0, 0, var(--md-shadow-key-umbra-opacity));
+  color: var(--jp-ui-font-color1);
+  background-color: var(--jp-layout-color3);
+}
+
+.jupyter-button:focus:enabled {
+  outline: 1px solid var(--jp-widgets-input-focus-border-color);
+}
+
+/* Button "Primary" Styling */
+
+.jupyter-button.mod-primary {
+  color: var(--jp-ui-inverse-font-color1);
+  background-color: var(--jp-brand-color1);
+}
+
+.jupyter-button.mod-primary.mod-active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-brand-color0);
+}
+
+.jupyter-button.mod-primary:active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-brand-color0);
+}
+
+/* Button "Success" Styling */
+
+.jupyter-button.mod-success {
+  color: var(--jp-ui-inverse-font-color1);
+  background-color: var(--jp-success-color1);
+}
+
+.jupyter-button.mod-success.mod-active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-success-color0);
+}
+
+.jupyter-button.mod-success:active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-success-color0);
+}
+
+/* Button "Info" Styling */
+
+.jupyter-button.mod-info {
+  color: var(--jp-ui-inverse-font-color1);
+  background-color: var(--jp-info-color1);
+}
+
+.jupyter-button.mod-info.mod-active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-info-color0);
+}
+
+.jupyter-button.mod-info:active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-info-color0);
+}
+
+/* Button "Warning" Styling */
+
+.jupyter-button.mod-warning {
+  color: var(--jp-ui-inverse-font-color1);
+  background-color: var(--jp-warn-color1);
+}
+
+.jupyter-button.mod-warning.mod-active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-warn-color0);
+}
+
+.jupyter-button.mod-warning:active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-warn-color0);
+}
+
+/* Button "Danger" Styling */
+
+.jupyter-button.mod-danger {
+  color: var(--jp-ui-inverse-font-color1);
+  background-color: var(--jp-error-color1);
+}
+
+.jupyter-button.mod-danger.mod-active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-error-color0);
+}
+
+.jupyter-button.mod-danger:active {
+  color: var(--jp-ui-inverse-font-color0);
+  background-color: var(--jp-error-color0);
+}
+
+/* Widget Button, Widget Toggle Button, Widget Upload */
+
+
+.jp-Output-result > .jupyter-widgets {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.jupyter-widget-Collapse {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.jupyter-widget-Collapse-header {
+  padding: var(--jp-widgets-input-padding);
+  cursor: pointer;
+  color: var(--jp-ui-font-color2);
+  background-color: var(--jp-layout-color2);
+  border: var(--jp-widgets-border-width) solid var(--jp-border-color1);
+  padding: calc(var(--jp-widgets-container-padding) * 2 / 3)
+    var(--jp-widgets-container-padding);
+  font-weight: bold;
+}
+
+.jupyter-widget-Collapse-header:hover {
+  background-color: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);
+}
+
+.jupyter-widget-Collapse-open > .jupyter-widget-Collapse-header {
+  background-color: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color0);
+  cursor: default;
+  border-bottom: none;
+}
+
+.jupyter-widget-Collapse-contents {
+  padding: var(--jp-widgets-container-padding);
+  background-color: var(--jp-layout-color1);
+  color: var(--jp-ui-font-color1);
+  border-left: var(--jp-widgets-border-width) solid var(--jp-border-color1);
+  border-right: var(--jp-widgets-border-width) solid var(--jp-border-color1);
+  border-bottom: var(--jp-widgets-border-width) solid var(--jp-border-color1);
+  overflow: auto;
+}
+
+.jupyter-widget-Accordion {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.jupyter-widget-Accordion .jupyter-widget-Collapse {
+  margin-bottom: 0;
+}
+
+.jupyter-widget-Accordion .jupyter-widget-Collapse + .jupyter-widget-Collapse {
+  margin-top: 4px;
+}
+
+.jp-mod-sideBySide.jp-Notebook .jp-CodeCell .jp-Cell-outputWrapper {
+  /* overwrite the default margin (no vertical separation needed in side by side move */
+  margin-top: 0;
+  grid-area: output;
+}
+
+
+.jp-Notebook.jp-mod-commandMode
+  .jp-Cell.jp-mod-active.jp-mod-selected:not(.jp-mod-multiSelected) {
+  background: transparent;
+}
+
+.jp-Cell {
+  padding: var(--jp-cell-padding);
+  margin: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.jp-Cell-inputWrapper,
+.jp-Cell-outputWrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+
+  /* Added to reveal the box-shadow on the input and output collapsers. */
+  overflow: visible;
+}
+
+/* Only input/output areas inside cells */
+.jp-Cell-inputArea,
+.jp-Cell-outputArea {
+  flex: 1 1 auto;
+}
+
+.jp-Cell:not(.jp-mod-noOutputs) .jp-Cell-outputWrapper {
+  margin-top: 5px;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-Cell-outputArea {
+  overflow-y: auto;
+  max-height: 24em;
+  margin-left: var(--jp-private-cell-scrolling-output-offset);
+  resize: vertical;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-Cell-outputArea[style*='height'] {
+  max-height: unset;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-Cell-outputArea::after {
+  content: ' ';
+  box-shadow: inset 0 0 6px 2px rgb(0 0 0 / 30%);
+  width: 100%;
+  height: 100%;
+  position: sticky;
+  bottom: 0;
+  top: 0;
+  margin-top: -50%;
+  float: left;
+  display: block;
+  pointer-events: none;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-OutputArea-child {
+  padding-top: 6px;
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-OutputArea-prompt {
+  width: calc(
+    var(--jp-cell-prompt-width) - var(--jp-private-cell-scrolling-output-offset)
+  );
+  flex: 0 0
+    calc(
+      var(--jp-cell-prompt-width) -
+        var(--jp-private-cell-scrolling-output-offset)
+    );
+}
+
+.jp-CodeCell.jp-mod-outputsScrolled .jp-OutputArea-promptOverlay {
+  left: calc(-1 * var(--jp-private-cell-scrolling-output-offset));
+}
+
+.cell-output-ipywidget-background {
+       background-color: transparent !important;
+       background: transparent !important;
+}
+.jp-OutputArea-output {
+   background-color: transparent !important;
+}  
+
+.jupyter-matplotlib {
+    width: auto;
+    height: auto;
+    flex: 1 1 auto;
+}
+
+/* Toolbar */
+
+.jupyter-matplotlib-toolbar {
+    position: absolute;
+    overflow: visible;
+    z-index: 100;
+}
+
+.jupyter-matplotlib-toolbar-fadein-fadeout {
+    transition: visibility 0.5s linear, opacity 0.5s linear;
+}
+
+.jupyter-matplotlib-button {
+    width: calc(var(--jp-widgets-inline-width-tiny) / 2 - 2px);
+    padding: 0 !important;
+}
+
+/* Figure */
+
+.jupyter-matplotlib-figure {
+    width: fit-content;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.jupyter-matplotlib-canvas-container {
+    overflow: auto;
+}
+
+.jupyter-matplotlib-canvas-div {
+    margin: 2px;
+    flex: 1 1 auto;
+}
+
+.jupyter-matplotlib-header {
+    width: 100%;
+    text-align: center;
+}
+
+.jupyter-matplotlib-footer {
+    width: 100%;
+    text-align: center;
+    min-height: var(--jp-widgets-inline-height);
+}
