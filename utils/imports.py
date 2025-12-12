@@ -28,11 +28,11 @@ from amuse.couple.bridge import Bridge
 from IPython.display import display
 from IPython.core.pylabtools import figsize, getfigs
 
-# set_printing_strategy(
-#     "custom",
-#     preferred_units=[u.MSun, u.RSun, u.Myr],
-#     precision=6,
-#     prefix="",
-#     separator="[",
-#     suffix="]"
-# )
+set_printing_strategy(
+    "custom",
+    preferred_units=[u.MSun, u.RSun, u.Myr],
+    precision=6,
+    prefix="",
+    separator="[",
+    suffix="]"
+)
