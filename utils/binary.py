@@ -1,0 +1,46 @@
+from amuse.lab import *
+from amuse.ext.orbital_elements import generate_binaries
+from amuse.io.base import IoException
+from amuse.lab import write_set_to_file, read_set_from_file
+from .imports import *
+
+def get_blackhole_binary(m1:int, m2:int, a_bbh = 0.2, e_bbh = 0):
+    """
+    Create a tuple of particles for the black holes using the passed
+    parameters, then add those particles to the Particles class
+    and lastly move the center of mass to the origin
+    """
+    try:
+        binary = read_set_from_file(f"./data/setup/binary/m1={m1}m2={m2}a={a_bbh}e={e_bbh}.hdf5")
+    except IoException:
+        bh1, bh2 = generate_binaries(
+            m1 | u.MSun, 
+            m2 | u.MSun,
+            a_bbh | u.AU, 
+            e_bbh,              # unitless
+            G = c.G
+        )
+        bh1.name, bh2.name = "primary", "secondary"
+
+        # Schwarzschild radius
+        rs = lambda m: 2*c.G*m/(c.c**2)
+        bh1.radius, bh2.radius = rs(bh1.mass), rs(bh2.mass)
+
+        # Mass ratio
+        q = bh2.mass / bh1.mass
+        bh1.q, bh2.q = q, 1/q
+
+        binary = Particles()
+        binary.add_particle(bh1)
+        binary.add_particle(bh2)
+
+        # Optional: add normalized mass attribute
+        binary.add_calculated_attribute('mass_ratio', lambda mass: mass/mass.sum())
+
+        # Move binary to center of mass
+        binary.move_to_center()
+
+        # Save to file
+        write_set_to_file(binary, f"./data/setup/binary/m1={m1}m2={m2}a={a_bbh}e={e_bbh}.hdf5")
+
+    return binary
