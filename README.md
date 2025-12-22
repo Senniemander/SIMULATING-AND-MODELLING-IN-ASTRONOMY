@@ -14,11 +14,11 @@ We simulate these encounters to study how these parameters influence accretion p
 
 Click the links below to watch the simulation MP4s:
 
-- [Lady_Tramp 30/70, Phase 0](simulations/Lady_Tramp_30_70_0.mp4)  
-- [Lady_Tramp 30/70, Phase π](simulations/Lady_Tramp_30_70_pi.mp4)  
-- [Lady_Tramp 40/60, Phase 0](simulations/Lady_Tramp_40_60_0.mp4)  
-- [Lady_Tramp 40/60, Phase π](simulations/Lady_Tramp_40_60_pi.mp4)  
-- [Lady_Tramp 50/50, Phase 0](simulations/Lady_Tramp_50_50_0.mp4)  
-- [Lady_Tramp 50/50, Phase π](simulations/Lady_Tramp_50_50_pi.mp4)  
-- [Lady_Tramp 70/30, Phase 0](simulations/Lady_Tramp_70_30_0.mp4)  
-- [Lady_Tramp 70/30, Phase π](simulations/Lady_Tramp_70_30_pi.mp4)  
+- [Lady_Tramp 30/70, Phase 0](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/Ssimulations/Lady_Tramp_30_70_0.mp4)  
+- [Lady_Tramp 30/70, Phase π](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_30_70_pi.mp4)  
+- [Lady_Tramp 40/60, Phase 0](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_40_60_0.mp4)  
+- [Lady_Tramp 40/60, Phase π](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_40_60_pi.mp4)  
+- [Lady_Tramp 50/50, Phase 0](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_50_50_0.mp4)  
+- [Lady_Tramp 50/50, Phase π](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_50_50_pi.mp4)  
+- [Lady_Tramp 70/30, Phase 0](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_70_30_0.mp4)  
+- [Lady_Tramp 70/30, Phase π](SIMULATING-AND-MODELLING-IN-ASTRONOMY-refactoring_code/simulations/Lady_Tramp_70_30_pi.mp4)  
